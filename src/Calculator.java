@@ -42,6 +42,8 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textField.setText(String.valueOf(Double.parseDouble(textField.getText()) * -1));
+                historyLabel.setText(historyLabel.getText() + " × -1");
+
             }
         });
         add(buttonPlusMinis);
