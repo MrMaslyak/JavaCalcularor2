@@ -73,6 +73,7 @@ public class Calculator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (textField.getText().contains(".") ){
                     textField.setText("You have already .");
+                    historyLabel.setText("");
                 }else {
                     clearErrorMessage2();
                     clearErrorMessage();
@@ -107,6 +108,7 @@ public class Calculator extends JFrame {
                     double divisor = Double.parseDouble(textField.getText());
                     if (divisor == 0) {
                         textField.setText("Division by zero is impossible");
+                        historyLabel.setText("");
                     } else {
                         textField.setText(String.valueOf(Double.parseDouble(text) / divisor));
                     }
@@ -375,9 +377,5 @@ public class Calculator extends JFrame {
             textField.setText("");
         }
     }
-    private void clearErrorMessage3() {
-        if ("You have already .".equals(textField.getText())) {
-            textField.setText("");
-        }
-    }
+
 }
