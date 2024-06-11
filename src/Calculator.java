@@ -11,7 +11,7 @@ public class Calculator extends JFrame {
 
 
     Calculator() {
-        setSize(225, 400);
+        setSize(225, 430);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension buttonSize = new Dimension(48, 30);
@@ -26,6 +26,12 @@ public class Calculator extends JFrame {
         textField.setSize(200, 75);
         textField.setLocation(5, 74);
         add(textField);
+
+        JLabel historyLabel = new JLabel("");
+        historyLabel.setForeground(Color.RED);
+        historyLabel.setSize(200, 20);
+        historyLabel.setLocation(5, 50);
+        add(historyLabel);
 
         JButton buttonPlusMinis = new JButton("+/-");
         buttonPlusMinis.setSize(buttonSize);
@@ -51,6 +57,8 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "0");
+                historyLabel.setText(historyLabel.getText() + "0");
+
             }
         });
         add(button0);
@@ -69,6 +77,7 @@ public class Calculator extends JFrame {
                     clearErrorMessage2();
                     clearErrorMessage();
                     textField.setText(textField.getText() + ".");
+                    historyLabel.setText(historyLabel.getText() + ".");
                 }
 
 
@@ -117,6 +126,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "1");
+                historyLabel.setText(historyLabel.getText() + "1");
             }
         });
         add(button1);
@@ -132,6 +142,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "2");
+                historyLabel.setText(historyLabel.getText() + "2");
             }
         });
         add(button2);
@@ -147,6 +158,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "3");
+                historyLabel.setText(historyLabel.getText() + "3");
             }
         });
         add(button3);
@@ -161,6 +173,8 @@ public class Calculator extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "+";
+                historyLabel.setText(text + " + ");
+
             }
         });
 
@@ -176,6 +190,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "4");
+                historyLabel.setText(historyLabel.getText() + "4");
             }
         });
 
@@ -192,6 +207,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "5");
+                historyLabel.setText(historyLabel.getText() + "5");
             }
         });
         add(button5);
@@ -207,6 +223,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "6");
+                historyLabel.setText(historyLabel.getText() + "6");
             }
         });
         add(button6);
@@ -220,6 +237,8 @@ public class Calculator extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "-";
+                historyLabel.setText(text + " - ");
+
             }
         });
         add(buttonMinus);
@@ -235,6 +254,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "7");
+                    historyLabel.setText(historyLabel.getText() + "7");
             }
         });
         add(button7);
@@ -250,6 +270,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "8");
+                historyLabel.setText(historyLabel.getText() + "8");
             }
         });
         add(button8);
@@ -265,6 +286,7 @@ public class Calculator extends JFrame {
                 clearErrorMessage2();
                 clearErrorMessage();
                 textField.setText(textField.getText() + "9");
+                historyLabel.setText(historyLabel.getText() + "9");
             }
         });
         add(button9);
@@ -278,6 +300,7 @@ public class Calculator extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "×";
+                historyLabel.setText(text + " × ");
             }
         });
         add(buttonY);
@@ -291,6 +314,7 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textField.setText(String.valueOf(Double.parseDouble(textField.getText()) * Double.parseDouble(textField.getText())));
+                historyLabel.setText(textField.getText() + " x2 ");
 
             }
         });
@@ -303,6 +327,7 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textField.setText("");
+                historyLabel.setText("");
             }
         });
         add(buttonC);
@@ -316,6 +341,7 @@ public class Calculator extends JFrame {
                 String currentText  = textField.getText();
                 if (!currentText.isEmpty() && !currentText.equals("You have already .") && !currentText.equals("Division by zero is impossible")){
                     textField.setText(currentText.substring(0, currentText.length()-1 ));
+                    historyLabel.setText(historyLabel.getText().substring(0, historyLabel.getText().length()-1));
                 }
             }
         });
@@ -332,6 +358,7 @@ public class Calculator extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "÷";
+                historyLabel.setText(text + " ÷ ");
             }
         });
         add(buttonD);
@@ -344,6 +371,11 @@ public class Calculator extends JFrame {
         }
     }
     private void clearErrorMessage2() {
+        if ("You have already .".equals(textField.getText())) {
+            textField.setText("");
+        }
+    }
+    private void clearErrorMessage3() {
         if ("You have already .".equals(textField.getText())) {
             textField.setText("");
         }
