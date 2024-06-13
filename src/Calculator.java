@@ -366,6 +366,26 @@ public class Calculator extends JFrame {
             }
         });
         add(buttonD);
+
+        JButton buttonK = new JButton("√");
+        buttonK.setSize(buttonSize);
+        buttonK.setForeground(twelveButtonColorN);
+        buttonK.setBackground(new Color(32,32,32));
+        buttonK.setLocation(55, 310);
+        buttonK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clearErrorMessage2();
+                clearErrorMessage();
+                double value = Double.parseDouble(textField.getText());
+                double result = Math.sqrt(value);
+                textField.setText(String.valueOf(result));
+                historyLabel.setText("√" + value );
+            }
+        });
+        add(buttonK);
+
+
         setVisible(true);
     }
 
