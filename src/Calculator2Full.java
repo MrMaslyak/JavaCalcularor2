@@ -29,6 +29,13 @@ public class Calculator2Full extends JFrame {
         textField.setHorizontalAlignment(JTextField.RIGHT);
         jFrame.add(textField);
 
+        JLabel historyLabel = new JLabel("");
+        historyLabel.setForeground(Color.RED);
+        historyLabel.setSize(200, 20);
+        historyLabel.setLocation(5, 50);
+        add(historyLabel);
+
+
         JButton buttonPiMi = new JButton("+/-");
         buttonPiMi.setSize(buttonSize);
         buttonPiMi.setBackground(twelveButtonColor);
@@ -55,6 +62,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "0");
+                historyLabel.setText(historyLabel.getText() + "0");
             }
         });
         jFrame.add(button0);
@@ -121,6 +129,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "1");
+                historyLabel.setText(historyLabel.getText() + "1");
             }
         });
         jFrame.add(button1);
@@ -137,6 +146,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "2");
+                historyLabel.setText(historyLabel.getText() + "2");
             }
         });
         jFrame.add(button2);
@@ -153,6 +163,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "3");
+                historyLabel.setText(historyLabel.getText() + "3");
             }
         });
         jFrame.add(button3);
@@ -169,6 +180,7 @@ public class Calculator2Full extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "+";
+                historyLabel.setText(historyLabel.getText() + " + ");
             }
         });
         jFrame.add(buttonP);
@@ -185,6 +197,8 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "4");
+                historyLabel.setText(historyLabel.getText() + "4");
+
             }
         });
         jFrame.add(button4);
@@ -201,6 +215,8 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "5");
+                historyLabel.setText(historyLabel.getText() + "5");
+
             }
         });
         jFrame.add(button5);
@@ -217,6 +233,8 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "6");
+                historyLabel.setText(historyLabel.getText() + "6");
+
             }
         });
         jFrame.add(button6);
@@ -233,6 +251,8 @@ public class Calculator2Full extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "-";
+                historyLabel.setText(historyLabel.getText() + " - ");
+
             }
         });
         jFrame.add(buttonM);
@@ -249,6 +269,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "7");
+                historyLabel.setText(historyLabel.getText() + "7");
             }
         });
         jFrame.add(button7);
@@ -265,6 +286,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "8");
+                historyLabel.setText(historyLabel.getText() + "8");
             }
         });
         jFrame.add(button8);
@@ -281,6 +303,7 @@ public class Calculator2Full extends JFrame {
                 ErrorByZero();
                 textField.setFont(new Font("Arial", Font.PLAIN, 40));
                 textField.setText(textField.getText() + "9");
+                historyLabel.setText(historyLabel.getText() + "9");
             }
         });
         jFrame.add(button9);
@@ -297,6 +320,7 @@ public class Calculator2Full extends JFrame {
                 text = textField.getText();
                 textField.setText("");
                 sign = "×";
+                historyLabel.setText(historyLabel.getText() + " × ");
             }
         });
         jFrame.add(buttonY);
@@ -311,6 +335,7 @@ public class Calculator2Full extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textField.setText(String.valueOf(1 / (Double.parseDouble(textField.getText()))));
+                historyLabel.setText(  " 1/x" + historyLabel.getText() );
             }
         });
         jFrame.add(button1x);
