@@ -51,7 +51,7 @@ public class Calculator2Full extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 textField.setText(String.valueOf(Double.parseDouble(textField.getText().replace(',', '.')) * -1));
                 historyLabel.setText(historyLabel.getText().replace(',', '.') + " × -1");
-                if (resultDisplayed){
+                if (resultDisplayed) {
                     historyLabel.setText("");
                     historyLabel.setText("negative(" + textField.getText().replace(',', '.') + ")");
                 }
@@ -87,7 +87,7 @@ public class Calculator2Full extends JFrame {
         buttonZap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (resultDisplayed){
+                if (resultDisplayed) {
                     textField.setText("0");
                     historyLabel.setText("0");
                 }
@@ -394,18 +394,20 @@ public class Calculator2Full extends JFrame {
         buttonX2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
-                    double result = currentValue * currentValue;
-                    String formattedRes = df.format(result);
-                    textField.setText(formattedRes);
-                    historyLabel.setText("sqr( "+historyLabel.getText().replace(',', '.') +  " )");
-                    if (resultDisplayed) {
-                        historyLabel.setText("sqr( "+ String.valueOf(currentValue) +  " )");
-                    }
-                    resultDisplayed = false;
+                double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
+                double result = currentValue * currentValue;
+                String formattedRes = df.format(result);
+                textField.setText(String.valueOf(formattedRes));
+                historyLabel.setText(historyLabel.getText().replace(',', '.') + "²");
+                if (resultDisplayed){
+                    historyLabel.setText("");
+                    historyLabel.setText("sqr( "+ String.valueOf(currentValue) + " )");
+                    return;
+                }
             }
         });
         jFrame.add(buttonX2);
+
 
         JButton buttonC = new JButton("√");
         buttonC.setSize(buttonSize);
@@ -416,18 +418,16 @@ public class Calculator2Full extends JFrame {
         buttonC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String currentValueText = textField.getText();
-                currentValueText = currentValueText.replace(',', '.');
-                double currentValue = Double.parseDouble(currentValueText);
+                double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
                 double result = Math.sqrt(currentValue);
-                String formattedResult = df.format(result);
-                textField.setText(formattedResult);
-                historyLabel.setText("√" + currentValueText);
-                if (resultDisplayed) {
-                    historyLabel.setText("√" + currentValueText);
-                    textField.setText(formattedResult);
+                String formattedRes = df.format(result);
+                textField.setText(String.valueOf(formattedRes));
+                historyLabel.setText("√" + historyLabel.getText().replace(',', '.') );
+                if (resultDisplayed){
+                    historyLabel.setText("");
+                    historyLabel.setText("√( "+ String.valueOf(currentValue) + " )");
+                    return;
                 }
-                resultDisplayed = false;
             }
         });
         jFrame.add(buttonC);
@@ -460,9 +460,15 @@ public class Calculator2Full extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
-                textField.setText(df.format(Math.cos(currentValue)));
-                historyLabel.setText("cos" + historyLabel.getText().replace(',', '.'));
-                resultDisplayed = false;
+                double result = Math.cos(currentValue);
+                String formattedRes = df.format(result);
+                textField.setText(String.valueOf(formattedRes));
+                historyLabel.setText("cos" + historyLabel.getText().replace(',', '.') );
+                if (resultDisplayed){
+                    historyLabel.setText("");
+                    historyLabel.setText("cos( "+ String.valueOf(currentValue) + " )");
+                    return;
+                }
             }
         });
         jFrame.add(buttonCos);
@@ -477,9 +483,15 @@ public class Calculator2Full extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
-                textField.setText(df.format(Math.sin(currentValue)));
-                historyLabel.setText("sin" + historyLabel.getText().replace(',', '.'));
-                resultDisplayed = false;
+                double result = Math.sin(currentValue);
+                String formattedRes = df.format(result);
+                textField.setText(String.valueOf(formattedRes));
+                historyLabel.setText("sin" + historyLabel.getText().replace(',', '.') );
+                if (resultDisplayed){
+                    historyLabel.setText("");
+                    historyLabel.setText("sin( "+ String.valueOf(currentValue) + " )");
+                    return;
+                }
             }
         });
         jFrame.add(buttonSin);
