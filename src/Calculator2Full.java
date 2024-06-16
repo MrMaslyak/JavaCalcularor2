@@ -394,15 +394,15 @@ public class Calculator2Full extends JFrame {
         buttonX2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
-                double result = (Double.parseDouble(df.format(currentValue * currentValue)));
-                textField.setText(String.valueOf(result));
-                historyLabel.setText(historyLabel.getText().replace(',', '.') + "²");
-                if (resultDisplayed){
-                   historyLabel.setText("");
-                    historyLabel.setText(String.valueOf(currentValue) + "²");
-                }
-                resultDisplayed = false;
+                    double currentValue = Double.parseDouble(textField.getText().replace(',', '.'));
+                    double result = currentValue * currentValue;
+                    String formattedRes = df.format(result);
+                    textField.setText(formattedRes);
+                    historyLabel.setText("sqr( "+historyLabel.getText().replace(',', '.') +  " )");
+                    if (resultDisplayed) {
+                        historyLabel.setText("sqr( "+ String.valueOf(currentValue) +  " )");
+                    }
+                    resultDisplayed = false;
             }
         });
         jFrame.add(buttonX2);
